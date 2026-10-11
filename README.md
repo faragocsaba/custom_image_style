@@ -12,10 +12,10 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 
 | Preview | Image File & Prompt | Model / Adapter State | Result & Description |
 | :---: | :--- | :--- | :--- |
-| <img src="orig_dragon.png" width="200" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
-| <img src="orig_dragon_in_csaba_style.png" width="200" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
-| <img src="custom_dragon.png" width="200" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
-| <img src="custom_dragon_in_csaba_style.png" width="200" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
+| <img src="orig_dragon.png" width="300" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
+| <img src="orig_dragon_in_csaba_style.png" width="300" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
+| <img src="custom_dragon.png" width="300" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
+| <img src="custom_dragon_in_csaba_style.png" width="300" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
 
 ---
 
