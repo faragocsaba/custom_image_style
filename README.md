@@ -17,6 +17,20 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 | <img src="custom_dragon.png" width="400" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
 | <img src="custom_dragon_in_csaba_style.png" width="400" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
 
+### 🖼️ Gallery: Generalization Across Subjects & Scales
+
+To test the adaptability of the adapter, various prompts were generated across different domain categories (vehicles, animals, household objects) with tuned `scale` values:
+
+| Airplane | Bicycle | Cat | Dog |
+| :---: | :---: | :---: | :---: |
+| <img src="airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="cat_in_csaba_style.png" width="160" alt="Cat"> | <img src="dog_in_csaba_style.png" width="160" alt="Dog"> |
+| `airplane in csaba style`<br>*(scale: 1.2)* | `bicycle in csaba style`<br>*(scale: 1.1)* | `cat in csaba style`<br>*(scale: 1.0)* | `dog in csaba style`<br>*(scale: 1.1)* |
+
+| Fish | Horse | Mug |
+| :---: | :---: | :---: |
+| <img src="fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="mug_in_csaba_style.png" width="160" alt="Mug"> |
+| `fish in csaba style`<br>*(scale: 1.2)* | `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* |
+
 ---
 
 ## 📁 Repository Structure
