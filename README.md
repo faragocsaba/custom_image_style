@@ -10,12 +10,12 @@ Using a minimalist dataset of just **15 custom MS Paint illustrations** consisti
 
 The power of the trained LoRA adapter is illustrated below using the prompt `"dragon"` across different configurations:
 
-| Image File | Prompt Used | Model / Adapter State | Result & Description |
-| :--- | :--- | :--- | :--- |
-| `orig_dragon.png` | `dragon` | Base SDXL 1.0 (No LoRA) | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
-| `orig_dragon_in_csaba_style.png` | `dragon in csaba style` | Base SDXL 1.0 (No LoRA) | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
-| `custom_dragon.png` | `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from the fine-tuning. |
-| `custom_dragon_in_csaba_style.png` | `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
+| Preview | Image File & Prompt | Model / Adapter State | Result & Description |
+| :---: | :--- | :--- | :--- |
+| <img src="orig_dragon.png" width="200" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
+| <img src="orig_dragon_in_csaba_style.png" width="200" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
+| <img src="custom_dragon.png" width="200" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
+| <img src="custom_dragon_in_csaba_style.png" width="200" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
 
 ---
 
@@ -87,7 +87,7 @@ image.save("csaba_dragon.png")
 ### 1. Why install `diffusers` from GitHub?
 In `custom_image_style.ipynb`, we run:
 ```bash
-!pip install -q git+https://github.com/huggingface/diffusers.git
+!pip install -q git+[https://github.com/huggingface/diffusers.git](https://github.com/huggingface/diffusers.git)
 ```
 **Reason:** The SDXL training script (`train_text_to_image_lora_sdxl.py`) relies on cutting-edge features, bug fixes, and memory optimizations implemented in Hugging Face's latest development branch (`main`). Using standard `pip install diffusers` (from PyPI) risks version mismatches or `ImportError` exceptions when executing the training script.
 
