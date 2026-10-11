@@ -23,14 +23,14 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 
 ```text
 .
-├── csaba_paint_dataset.zip        # Dataset containing 15 red/green MS Paint PNG drawings & captions
-├── image_generator.ipynb          # Baseline generation script (uses SDXL Base directly)
-├── custom_image_style.ipynb       # LoRA training notebook (dataset extraction, training, testing)
-├── orig_dragon.png                # Benchmark: Base SDXL prompt="dragon"
-├── orig_dragon_in_csaba_style.png # Benchmark: Base SDXL prompt="dragon in csaba style"
-├── custom_dragon.png              # Benchmark: Fine-tuned SDXL prompt="dragon"
-├── custom_dragon_in_csaba_style.png# Benchmark: Fine-tuned SDXL prompt="dragon in csaba style"
-└── README.md                      # Project documentation
+├── csaba_paint_dataset.zip           # Dataset containing 15 red/green MS Paint PNG drawings & captions
+├── image_generator.ipynb             # Baseline generation script (uses SDXL Base directly)
+├── custom_image_style.ipynb          # LoRA training notebook (dataset extraction, training, testing)
+├── orig_dragon.png                   # Benchmark: Base SDXL prompt="dragon"
+├── orig_dragon_in_csaba_style.png    # Benchmark: Base SDXL prompt="dragon in csaba style"
+├── custom_dragon.png                 # Benchmark: Fine-tuned SDXL prompt="dragon"
+├── custom_dragon_in_csaba_style.png  # Benchmark: Fine-tuned SDXL prompt="dragon in csaba style"
+└── README.md                         # Project documentation
 ```
 
 > **Note:** The trained output weights (`pytorch_lora_weights.safetensors`) are **not** committed directly to GitHub due to file size best practices. Instead, the model is hosted on Hugging Face:
