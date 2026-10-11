@@ -110,6 +110,6 @@ pipe.load_lora_weights("fcsaba/csaba-style-sdxl-lora")
 Diffusion models start from random Gaussian noise. Passing `generator=torch.Generator("cuda").manual_seed(42)` ensures that the exact same initial noise map is constructed directly in VRAM. This guarantees **100% deterministic output**, making it possible to isolate and evaluate the effect of parameter changes (e.g., `scale` or `guidance_scale`) on identical image compositions.
 
 ### 5. Optimal Inference Hyperparameters
-* **`cross_attention_kwargs={"scale": 1.3}`**: At scale `1.0`, SDXL's photorealistic prior sometimes bleeds through. Boosting the scale to `1.3` forces the model strictly into the 2D MS Paint aesthetic.
+* **`cross_attention_kwargs={"scale": 1.3}`**: At scale `1.0`, SDXL's photorealistic prior sometimes bleeds through. Boosting the scale to `1.1` - `1.3` forces the model strictly into the 2D MS Paint aesthetic.
 * **`num_inference_steps`: 30**
 * **`guidance_scale`: 7.5**
