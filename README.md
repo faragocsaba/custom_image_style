@@ -6,6 +6,24 @@ Using a minimalist dataset of just **15 custom MS Paint illustrations** consisti
 
 ---
 
+## 🖼️ Training Dataset
+
+The model was fine-tuned on a minimalist dataset of 15 hand-drawn 2D MS Paint illustrations using strictly green (`#008000`) and red (`#FF0000`) lines on light backgrounds:
+
+| Apple | Ball | Balloon | Car | Cloud |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="csaba_paint_dataset/apple.png" width="130" alt="Apple"> | <img src="csaba_paint_dataset/ball.png" width="130" alt="Ball"> | <img src="csaba_paint_dataset/balloon.png" width="130" alt="Balloon"> | <img src="csaba_paint_dataset/car.png" width="130" alt="Car"> | <img src="csaba_paint_dataset/cloud.png" width="130" alt="Cloud"> |
+
+| Dog | Doll | Flag | Flower | House |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="csaba_paint_dataset/dog.png" width="130" alt="Dog"> | <img src="csaba_paint_dataset/doll.png" width="130" alt="Doll"> | <img src="csaba_paint_dataset/flag.png" width="130" alt="Flag"> | <img src="csaba_paint_dataset/flower.png" width="130" alt="Flower"> | <img src="csaba_paint_dataset/house.png" width="130" alt="House"> |
+
+| Pine | Ship | Star | Sun | Tree |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="csaba_paint_dataset/pine.png" width="130" alt="Pine"> | <img src="csaba_paint_dataset/ship.png" width="130" alt="Ship"> | <img src="csaba_paint_dataset/star.png" width="130" alt="Star"> | <img src="csaba_paint_dataset/sun.png" width="130" alt="Sun"> | <img src="csaba_paint_dataset/tree.png" width="130" alt="Tree"> |
+
+---
+
 ## 📊 Visual Comparison & Results
 
 The power of the trained LoRA adapter is illustrated below using the prompt `"dragon"` across different configurations:
