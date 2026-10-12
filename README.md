@@ -12,10 +12,10 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 
 | Preview | Image File & Prompt | Model / Adapter State | Result & Description |
 | :---: | :--- | :--- | :--- |
-| <img src="orig_dragon.png" width="400" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
-| <img src="orig_dragon_in_csaba_style.png" width="400" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
-| <img src="custom_dragon.png" width="400" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
-| <img src="custom_dragon_in_csaba_style.png" width="400" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
+| <img src="comparison/orig_dragon.png" width="400" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
+| <img src="comparison/orig_dragon_in_csaba_style.png" width="400" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
+| <img src="comparison/custom_dragon.png" width="400" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
+| <img src="comparison/custom_dragon_in_csaba_style.png" width="400" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
 
 ### 🖼️ Gallery: Generalization Across Subjects & Scales
 
@@ -23,12 +23,12 @@ To test the adaptability of the adapter, various prompts were generated across d
 
 | Airplane | Bicycle | Cat | Dog |
 | :---: | :---: | :---: | :---: |
-| <img src="airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="cat_in_csaba_style.png" width="160" alt="Cat"> | <img src="dog_in_csaba_style.png" width="160" alt="Dog"> |
+| <img src="examples/airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="examples/bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="examples/cat_in_csaba_style.png" width="160" alt="Cat"> | <img src="examples/dog_in_csaba_style.png" width="160" alt="Dog"> |
 | `airplane in csaba style`<br>*(scale: 1.2)* | `bicycle in csaba style`<br>*(scale: 1.1)* | `cat in csaba style`<br>*(scale: 1.0)* | `dog in csaba style`<br>*(scale: 1.1)* |
 
 | Fish | Horse | Mug |
 | :---: | :---: | :---: |
-| <img src="fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="mug_in_csaba_style.png" width="160" alt="Mug"> |
+| <img src="examples/fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="examples/horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="examples/mug_in_csaba_style.png" width="160" alt="Mug"> |
 | `fish in csaba style`<br>*(scale: 1.2)* | `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* |
 
 ---
@@ -44,7 +44,9 @@ To test the adaptability of the adapter, various prompts were generated across d
 ├── orig_dragon_in_csaba_style.png    # Benchmark: Base SDXL prompt="dragon in csaba style"
 ├── custom_dragon.png                 # Benchmark: Fine-tuned SDXL prompt="dragon"
 ├── custom_dragon_in_csaba_style.png  # Benchmark: Fine-tuned SDXL prompt="dragon in csaba style"
-└── README.md                         # Project documentation
+├── README.md                         # Project documentation
+├── comparison/                       # Images for comparison
+└── examples/                         # Example images generated with the model
 ```
 
 > **Note:** The trained output weights (`pytorch_lora_weights.safetensors`) are **not** committed directly to GitHub due to file size best practices. Instead, the model is hosted on Hugging Face:
@@ -122,8 +124,3 @@ pipe.load_lora_weights("fcsaba/csaba-style-sdxl-lora")
 
 ### 4. Reproducibility with `manual_seed(42)`
 Diffusion models start from random Gaussian noise. Passing `generator=torch.Generator("cuda").manual_seed(42)` ensures that the exact same initial noise map is constructed directly in VRAM. This guarantees **100% deterministic output**, making it possible to isolate and evaluate the effect of parameter changes (e.g., `scale` or `guidance_scale`) on identical image compositions.
-
-### 5. Optimal Inference Hyperparameters
-* **`cross_attention_kwargs={"scale": 1.3}`**: At scale `1.0`, SDXL's photorealistic prior sometimes bleeds through. Boosting the scale to `1.1` - `1.3` forces the model strictly into the 2D MS Paint aesthetic.
-* **`num_inference_steps`: 30**
-* **`guidance_scale`: 7.5**
