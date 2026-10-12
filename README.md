@@ -31,8 +31,8 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 <table>
   <thead>
     <tr>
-      <th width="50%" align="center">Preview</th>
-      <th width="50%" align="left">Details & Description</th>
+      <th width="40%" align="center">Preview</th>
+      <th width="60%" align="left">Details & Description</th>
     </tr>
   </thead>
   <tbody>
@@ -84,11 +84,9 @@ To test the adaptability of the adapter, various prompts were generated across d
 | :---: | :---: | :---: | :---: |
 | <img src="examples/airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="examples/bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="examples/cat_in_csaba_style.png" width="160" alt="Cat"> | <img src="examples/dog_in_csaba_style.png" width="160" alt="Dog"> |
 | `airplane in csaba style`<br>*(scale: 1.2)* | `bicycle in csaba style`<br>*(scale: 1.1)* | `cat in csaba style`<br>*(scale: 1.0)* | `dog in csaba style`<br>*(scale: 1.1)* |
-
-| Fish | Horse | Mug |
-| :---: | :---: | :---: |
-| <img src="examples/fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="examples/horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="examples/mug_in_csaba_style.png" width="160" alt="Mug"> |
-| `fish in csaba style`<br>*(scale: 1.2)* | `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* |
+| **Dragon** | **Fish** | **Horse** | **Mug** |
+| <img src="examples/dragon_in_csaba_style.png" width="160" alt="Dragon"> | <img src="examples/fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="examples/horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="examples/mug_in_csaba_style.png" width="160" alt="Mug"> |
+| `dragon in csaba style`<br>*(scale: 1.1)* | `fish in csaba style`<br>*(scale: 1.2)* | `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* |
 
 ---
 
@@ -135,7 +133,7 @@ image = pipe(
     prompt=prompt,
     num_inference_steps=30,
     guidance_scale=7.5,
-    cross_attention_kwargs={"scale": 1.3},  # LoRA adapter strength (optimal: 1.3)
+    cross_attention_kwargs={"scale": 1.2},
     generator=generator
 ).images[0]
 
