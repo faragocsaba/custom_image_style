@@ -28,12 +28,53 @@ The model was fine-tuned on a minimalist dataset of 15 hand-drawn 2D MS Paint il
 
 The power of the trained LoRA adapter is illustrated below using the prompt `"dragon"` across different configurations:
 
-| Preview | Image File & Prompt | Model / Adapter State | Result & Description |
-| :---: | :--- | :--- | :--- |
-| <img src="comparison/orig_dragon.png" width="400" alt="Original Dragon"> | `orig_dragon.png`<br>**Prompt:** `dragon` | Base SDXL 1.0<br>*(No LoRA)* | **Standard SDXL:** Highly detailed, realistic 3D fantasy dragon on a dramatic background. |
-| <img src="comparison/orig_dragon_in_csaba_style.png" width="400" alt="Original Dragon in Csaba Style"> | `orig_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | Base SDXL 1.0<br>*(No LoRA)* | **Base Model Failure:** Practically unchanged from the baseline; the base model has no concept of "csaba style". |
-| <img src="comparison/custom_dragon.png" width="400" alt="Custom Dragon"> | `custom_dragon.png`<br>**Prompt:** `dragon` | SDXL + LoRA Adapter | **Partial Influence:** Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning. |
-| <img src="comparison/custom_dragon_in_csaba_style.png" width="400" alt="Custom Dragon in Csaba Style"> | `custom_dragon_in_csaba_style.png`<br>**Prompt:** `dragon in csaba style` | SDXL + LoRA Adapter | **Full Activation:** Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint! |
+<table>
+  <thead>
+    <tr>
+      <th width="50%" align="center">Preview</th>
+      <th width="50%" align="left">Details & Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="comparison/orig_dragon.png" alt="Original Dragon"></td>
+      <td>
+        <b>File:</b> <code>orig_dragon.png</code><br>
+        <b>Prompt:</b> <code>dragon</code><br>
+        <b>Model:</b> Base SDXL 1.0 <i>(No LoRA)</i><br><br>
+        <b>Result:</b> <b>Standard SDXL:</b> Highly detailed, realistic 3D fantasy dragon on a dramatic background.
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><img src="comparison/orig_dragon_in_csaba_style.png" alt="Original Dragon in Csaba Style"></td>
+      <td>
+        <b>File:</b> <code>orig_dragon_in_csaba_style.png</code><br>
+        <b>Prompt:</b> <code>dragon in csaba style</code><br>
+        <b>Model:</b> Base SDXL 1.0 <i>(No LoRA)</i><br><br>
+        <b>Result:</b> <b>Base Model Failure:</b> Practically unchanged from the baseline; the base model has no concept of "csaba style".
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><img src="comparison/custom_dragon.png" alt="Custom Dragon"></td>
+      <td>
+        <b>File:</b> <code>custom_dragon.png</code><br>
+        <b>Prompt:</b> <code>dragon</code><br>
+        <b>Model:</b> SDXL + LoRA Adapter<br><br>
+        <b>Result:</b> <b>Partial Influence:</b> Without the trigger keyword, the output is noticeably simpler and less complex than the baseline, showing structural influence from fine-tuning.
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><img src="comparison/custom_dragon_in_csaba_style.png" alt="Custom Dragon in Csaba Style"></td>
+      <td>
+        <b>File:</b> <code>custom_dragon_in_csaba_style.png</code><br>
+        <b>Prompt:</b> <code>dragon in csaba style</code><br>
+        <b>Model:</b> SDXL + LoRA Adapter<br><br>
+        <b>Result:</b> <b>Full Activation:</b> Pure naive 2D red and green illustration on a neutral canvas—looking like a clever 10-year-old drew it in MS Paint!
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### 🖼️ Gallery: Generalization Across Subjects & Scales
 
@@ -55,14 +96,11 @@ To test the adaptability of the adapter, various prompts were generated across d
 
 ```text
 .
-├── csaba_paint_dataset.zip           # Dataset containing 15 red/green MS Paint PNG drawings & captions
 ├── image_generator.ipynb             # Baseline generation script (uses SDXL Base directly)
 ├── custom_image_style.ipynb          # LoRA training notebook (dataset extraction, training, testing)
-├── orig_dragon.png                   # Benchmark: Base SDXL prompt="dragon"
-├── orig_dragon_in_csaba_style.png    # Benchmark: Base SDXL prompt="dragon in csaba style"
-├── custom_dragon.png                 # Benchmark: Fine-tuned SDXL prompt="dragon"
-├── custom_dragon_in_csaba_style.png  # Benchmark: Fine-tuned SDXL prompt="dragon in csaba style"
+├── csaba_paint_dataset.zip           # Dataset containing 15 red/green MS Paint PNG drawings & captions
 ├── README.md                         # Project documentation
+├── csaba_paint_dataset/              # The original images
 ├── comparison/                       # Images for comparison
 └── examples/                         # Example images generated with the model
 ```
