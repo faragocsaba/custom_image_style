@@ -149,6 +149,7 @@ image.save("csaba_dragon.png")
 * **Dataset:** 15 hand-drawn 2D PNG images (`csaba_paint_dataset.zip`), strictly green (`#008000`) and red (`#FF0000`) line art on light backgrounds.
 * **Epochs:** **50 epochs** (50 epochs proved to be the sweet spot for forcing strong 2D geometry without destabilizing the UNet).
 * **Training Duration:** Approximately **40–45 minutes** on the T4 GPU.
+* **Google Colab Notebook:** https://colab.research.google.com/drive/1fcSCnVShqe9IULuV4Nevne20u42DNrbZ
 
 ---
 
