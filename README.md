@@ -80,13 +80,17 @@ The power of the trained LoRA adapter is illustrated below using the prompt `"dr
 
 To test the adaptability of the adapter, various prompts were generated across different domain categories (vehicles, animals, household objects) with tuned `scale` values:
 
-| Airplane | Bicycle | Cat | Dog |
+| Airplane | Bicycle | Butterfly | Cat |
 | :---: | :---: | :---: | :---: |
-| <img src="examples/airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="examples/bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="examples/cat_in_csaba_style.png" width="160" alt="Cat"> | <img src="examples/dog_in_csaba_style.png" width="160" alt="Dog"> |
-| `airplane in csaba style`<br>*(scale: 1.2)* | `bicycle in csaba style`<br>*(scale: 1.1)* | `cat in csaba style`<br>*(scale: 1.0)* | `dog in csaba style`<br>*(scale: 1.1)* |
-| **Dragon** | **Fish** | **Horse** | **Mug** |
-| <img src="examples/dragon_in_csaba_style.png" width="160" alt="Dragon"> | <img src="examples/fish_in_csaba_style.png" width="160" alt="Fish"> | <img src="examples/horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="examples/mug_in_csaba_style.png" width="160" alt="Mug"> |
-| `dragon in csaba style`<br>*(scale: 1.1)* | `fish in csaba style`<br>*(scale: 1.2)* | `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* |
+| <img src="examples/airplane_in_csaba_style.png" width="160" alt="Airplane"> | <img src="examples/bicycle_in_csaba_style.png" width="160" alt="Bicycle"> | <img src="examples/butterfly_in_csaba_style.png" width="160" alt="Butterfly"> | <img src="examples/cat_in_csaba_style.png" width="160" alt="Cat"> |
+| `airplane in csaba style`<br>*(scale: 1.2)* | `bicycle in csaba style`<br>*(scale: 1.1)* | `butterfly in csaba style`<br>*(scale: 1.1)* | `cat in csaba style`<br>*(scale: 1.0)* |
+| **Dinosaur** | **Dog** | **Dragon** | **Fish** |
+| <img src="examples/dinosaur_in_csaba_style.png" width="160" alt="Dinosaur"> | <img src="examples/dog_in_csaba_style.png" width="160" alt="Dog"> | <img src="examples/dragon_in_csaba_style.png" width="160" alt="Dragon"> | <img src="examples/fish_in_csaba_style.png" width="160" alt="Fish"> |
+| `dinosaur in csaba style`<br>*(scale: 1.1)* | `dog in csaba style`<br>*(scale: 1.1)* | `dragon in csaba style`<br>*(scale: 1.1)* | `fish in csaba style`<br>*(scale: 1.2)* |
+| **Horse** | **Mug** | **Snail** | **Sun** |
+| <img src="examples/horse_in_csaba_style.png" width="160" alt="Horse"> | <img src="examples/mug_in_csaba_style.png" width="160" alt="Mug"> | <img src="examples/snail_in_csaba_style.png" width="160" alt="Snail"> | <img src="examples/sun_in_csaba_style.png" width="160" alt="Sun"> |
+| `horse in csaba style`<br>*(scale: 1.2)* | `mug in csaba style`<br>*(scale: 1.2)* | `snail in csaba style`<br>*(scale: 1.1)* | `sun in csaba style`<br>*(scale: 1.1)* |
+
 
 ---
 
@@ -94,7 +98,6 @@ To test the adaptability of the adapter, various prompts were generated across d
 
 ```text
 .
-├── image_generator.ipynb             # Baseline generation script (uses SDXL Base directly)
 ├── custom_image_style.ipynb          # LoRA training notebook (dataset extraction, training, testing)
 ├── csaba_paint_dataset.zip           # Dataset containing 15 red/green MS Paint PNG drawings & captions
 ├── README.md                         # Project documentation
@@ -126,14 +129,14 @@ pipe = AutoPipelineForText2Image.from_pretrained(
 pipe.load_lora_weights("fcsaba/csaba-style-sdxl-lora")
 
 # 3. Generate image deterministically
-prompt = "a dragon in csaba style, plain background"
+prompt = "dragon in csaba style"
 generator = torch.Generator("cuda").manual_seed(42)
 
 image = pipe(
     prompt=prompt,
     num_inference_steps=30,
     guidance_scale=7.5,
-    cross_attention_kwargs={"scale": 1.2},
+    cross_attention_kwargs={"scale": 1.1},
     generator=generator
 ).images[0]
 
@@ -148,7 +151,7 @@ image.save("csaba_dragon.png")
 * **Environment:** Google Colab (**NVIDIA T4 GPU**, 16GB VRAM)
 * **Dataset:** 15 hand-drawn 2D PNG images (`csaba_paint_dataset.zip`), strictly green (`#008000`) and red (`#FF0000`) line art on light backgrounds.
 * **Epochs:** **50 epochs** (50 epochs proved to be the sweet spot for forcing strong 2D geometry without destabilizing the UNet).
-* **Training Duration:** Approximately **40–45 minutes** on the T4 GPU.
+* **Training Duration:** Approximately **45 minutes** on the T4 GPU.
 * **Google Colab Notebook:** https://colab.research.google.com/drive/1fcSCnVShqe9IULuV4Nevne20u42DNrbZ
 
 ---
@@ -164,8 +167,8 @@ In `custom_image_style.ipynb`, we run:
 
 ### 2. How LoRA Fine-Tuning Works
 Rather than re-training all 3.5 billion parameters of SDXL (which requires enterprise GPUs and massive memory), **LoRA (Low-Rank Adaptation)** keeps the base model completely frozen. It attaches tiny, trainable decomposition matrices to the Attention layers of UNet and Text Encoders.
-* **Base Model Size:** ~6.6 GB (remains untouched)
-* **LoRA Adapter Size:** ~20–50 MB (`pytorch_lora_weights.safetensors`)
+* **Base Model Size:** ~6.94 GB (remains untouched)
+* **LoRA Adapter Size:** ~23.4 MB (`pytorch_lora_weights.safetensors`)
 
 ### 3. Loading Local vs. Remote LoRA
 During training, local testing uses:
